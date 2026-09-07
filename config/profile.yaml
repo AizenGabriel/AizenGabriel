@@ -1,4 +1,5 @@
 profile:
+  version: "1.1"
   name: Aizen Gabriel
   handle: AizenGabriel
   roles: [Software Engineer, DevOps, AI]
@@ -17,11 +18,18 @@ focus:
     state: EVOLVING
     scope: Interests and experimentation
     capabilities: [LLM Applications, AI Agents, RAG, AI Automation, AI Infrastructure]
-processes:
-  - {pid: '0412', name: building-reliable-systems, state: RUNNING}
-  - {pid: '0819', name: automating-repetitive-work, state: RUNNING}
-  - {pid: '1337', name: experimenting-with-agents, state: EXPLORING}
-  - {pid: '2048', name: learning-new-things, state: INFINITE}
+featured_project:
+  name: Aizen Control Plane
+  summary: A small GitHub profile system, built to maintain itself.
+  technologies: [Python, SVG, YAML, GitHub Actions]
+  decisions:
+    - One declarative source for identity and content.
+    - Public API observations with explicit sample limits.
+    - Reproducible assets and failure-safe refreshes.
+  maintenance: Current work — refining the interface and testing the automation.
+  source: https://github.com/AizenGabriel/AizenGabriel
+  documentation: ./docs/DEVELOPMENT.md
+experiments: []
 principles:
   automation: automate repeatable work
   observability: systems should explain themselves
@@ -29,7 +37,9 @@ principles:
   simplicity: complexity must earn its place
   scalability: scale intentionally
   learning: remain permanently unfinished
-trajectory: [Software, Automation, Infrastructure, Observability, Intelligence, Autonomous Systems]
+architecture:
+  nodes: [Software, Infrastructure, Observability, Automation]
+  exploration: AI / EXPLORATION
 links:
   github: https://github.com/AizenGabriel
 telemetry:

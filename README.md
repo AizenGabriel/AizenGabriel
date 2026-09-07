@@ -1,33 +1,17 @@
 <p align="center">
-  <img src="./assets/static/hero.svg" width="100%" alt="Aizen Gabriel — Software Engineer · DevOps · AI. Building systems that ship, scale, observe and learn.">
+  <img src="./assets/static/hero.svg" width="480" alt="Aizen Gabriel — Software Engineer · DevOps · AI. Ship, scale, observe and learn. v1.1">
 </p>
 
 <!-- AUTO-GENERATED: scripts/generate_profile.py; edit config/profile.yaml. -->
 
-### 01 / SYSTEM IDENTITY
+#### 01 / IDENTITY
 
 `$ whoami`
 
-**Aizen Gabriel** · Software Engineer · DevOps · AI
-
 I build software, automate infrastructure, and explore systems where engineering and artificial intelligence converge.
 
-### 02 / SYSTEM STATUS
-
-`$ system.status`
-
-| Subsystem | State |
-| :--- | :--- |
-| Engineering | `OPERATIONAL` |
-| Infrastructure | `AUTOMATED` |
-| Artificial Intelligence | `EVOLVING` |
-| Observability | `MONITORING` |
-
-States describe the profile’s operating model; they are not skill ratings or uptime measurements.
-
-### 03 / ENGINEER RESOURCE
-
-`$ kubectl describe engineer aizen`
+<details>
+<summary>Inspect engineer resource</summary>
 
 **Engineering** / Engineering focus
 
@@ -40,9 +24,6 @@ Containers · Kubernetes · Infrastructure as Code · CI/CD · Linux · Observab
 **Artificial Intelligence** / Interests and experimentation
 
 LLM Applications · AI Agents · RAG · AI Automation · AI Infrastructure
-
-<details>
-<summary>Inspect declarative manifest</summary>
 
 ```yaml
 apiVersion: engineering.aizen.dev/v1
@@ -68,43 +49,41 @@ status:
 
 </details>
 
-### 04 / ARCHITECTURE
+#### 02 / FEATURED PROJECT
+
+**Aizen Control Plane** — A small GitHub profile system, built to maintain itself.
+
+Python · SVG · YAML · GitHub Actions
+
+- One declarative source for identity and content.
+- Public API observations with explicit sample limits.
+- Reproducible assets and failure-safe refreshes.
+
+[Source](https://github.com/AizenGabriel/AizenGabriel) · [How it works](./docs/DEVELOPMENT.md)
+
+Current work — refining the interface and testing the automation.
+
+#### 03 / ARCHITECTURE
 
 I build systems that operate software — and explore systems that reason about it.
 
-<img src="./assets/static/architecture.svg" width="100%" alt="Software → Automation → Infrastructure → Observability → Intelligence → Autonomous Systems. Learning feeds back into engineering.">
+<p align="center">
+  <img src="./assets/static/architecture.svg" width="480" alt="Software → Infrastructure → Observability → Automation → Software. AI is a direction of exploration.">
+</p>
 
-### 05 / CURRENT PROCESSES
+#### 04 / PUBLIC TELEMETRY
 
-`$ process.list`
+<p align="center">
+  <img src="./assets/generated/telemetry.svg" width="480" alt="Public repository counts and last successful synchronization. Text values are available in the data snapshot below.">
+</p>
 
-| PID | Process | State |
-| :--- | :--- | :--- |
-| 0412 | building-<wbr>reliable-<wbr>systems | RUNNING |
-| 0819 | automating-<wbr>repetitive-<wbr>work | RUNNING |
-| 1337 | experimenting-<wbr>with-<wbr>agents | EXPLORING |
-| 2048 | learning-<wbr>new-<wbr>things | INFINITE |
+<p align="center">
+  <img src="./assets/generated/activity.svg" width="480" alt="Observed public GitHub events by UTC day. A bounded sample, not a contribution total.">
+</p>
 
-### 06 / LIVE TELEMETRY
+Refreshed daily. Public events are a bounded sample, not commit totals. [Data & last sync](./assets/generated/telemetry.json) · [Metric definitions](./docs/DEVELOPMENT.md#metric-contracts)
 
-<img src="./assets/generated/telemetry.svg" width="100%" alt="Public GitHub repository telemetry; counts and synchronization time are available in the linked data snapshot.">
-
-<img src="./assets/generated/activity.svg" width="100%" alt="Daily observed public GitHub events, with UTC dates and sample limits. Accessible values are available in the linked data snapshot.">
-
-Public API observations, refreshed daily. Activity is a bounded event sample, not a contribution or commit total. Zero means no events returned for that day. See the [data snapshot](./assets/generated/telemetry.json) for values and the last successful synchronization.
-
-### 07 / ENGINEERING DIRECTIVES
-
-| Directive | Operating principle |
-| :--- | :--- |
-| automation | automate repeatable work |
-| observability | systems should explain themselves |
-| reliability | design for failure |
-| simplicity | complexity must earn its place |
-| scalability | scale intentionally |
-| learning | remain permanently unfinished |
-
-### 08 / CONNECT
+#### 05 / CONNECT
 
 [github](https://github.com/AizenGabriel)
 
