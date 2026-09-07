@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 143" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" role="img" aria-labelledby="title desc">
 <!-- AUTO-GENERATED FILE. Source: scripts/generate_activity.py. Do not edit manually. -->
 <title id="title">Public GitHub activity</title>
-<desc id="desc">Bounded public event sample. 09 Aug 2026: 0 observed events; 10 Aug 2026: 0 observed events; 11 Aug 2026: 0 observed events; 12 Aug 2026: 0 observed events; 13 Aug 2026: 0 observed events; 14 Aug 2026: 0 observed events; 15 Aug 2026: 0 observed events; 16 Aug 2026: 0 observed events; 17 Aug 2026: 0 observed events; 18 Aug 2026: 0 observed events; 19 Aug 2026: 0 observed events; 20 Aug 2026: 0 observed events; 21 Aug 2026: 0 observed events; 22 Aug 2026: 0 observed events; 23 Aug 2026: 0 observed events; 24 Aug 2026: 0 observed events; 25 Aug 2026: 0 observed events; 26 Aug 2026: 0 observed events; 27 Aug 2026: 0 observed events; 28 Aug 2026: 0 observed events; 29 Aug 2026: 0 observed events; 30 Aug 2026: 0 observed events; 31 Aug 2026: 0 observed events; 01 Sep 2026: 0 observed events; 02 Sep 2026: 0 observed events; 03 Sep 2026: 0 observed events; 04 Sep 2026: 0 observed events; 05 Sep 2026: 0 observed events; 06 Sep 2026: 0 observed events; 07 Sep 2026: 0 observed events</desc>
+<desc id="desc">Bounded public event sample. 09 Aug 2026: 0 observed events; 10 Aug 2026: 0 observed events; 11 Aug 2026: 0 observed events; 12 Aug 2026: 0 observed events; 13 Aug 2026: 0 observed events; 14 Aug 2026: 0 observed events; 15 Aug 2026: 0 observed events; 16 Aug 2026: 0 observed events; 17 Aug 2026: 0 observed events; 18 Aug 2026: 0 observed events; 19 Aug 2026: 0 observed events; 20 Aug 2026: 0 observed events; 21 Aug 2026: 0 observed events; 22 Aug 2026: 0 observed events; 23 Aug 2026: 0 observed events; 24 Aug 2026: 0 observed events; 25 Aug 2026: 0 observed events; 26 Aug 2026: 0 observed events; 27 Aug 2026: 0 observed events; 28 Aug 2026: 0 observed events; 29 Aug 2026: 0 observed events; 30 Aug 2026: 0 observed events; 31 Aug 2026: 0 observed events; 01 Sep 2026: 0 observed events; 02 Sep 2026: 0 observed events; 03 Sep 2026: 0 observed events; 04 Sep 2026: 0 observed events; 05 Sep 2026: 0 observed events; 06 Sep 2026: 0 observed events; 07 Sep 2026: 1 observed events</desc>
 <style>
 svg { color: #292136; background: transparent; }
 .bg { fill: #FAF8FF; stroke: #D9CFE7; }
@@ -20,9 +20,12 @@ text { fill: #292136; font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Co
 .pulse { animation: breathe 4s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
 </style>
-<rect class="bg" x="1" y="1" width="478" height="141" rx="14"/>
+<rect class="bg" x="1" y="1" width="478" height="238" rx="14"/>
 <text x="28" y="34" class="accent" style="font-size:14px">ACTIVITY / PUBLIC EVENTS</text>
-<text x="28" y="66" class="" style="font-size:16px">No public events observed</text>
-<text x="28" y="92" class="muted" style="font-size:14px">09 Aug 2026 → 07 Sep 2026 / UTC</text>
-<text x="28" y="119" class="muted" style="font-size:14px">Returned sample only; not proof of inactivity.</text>
+<text x="28" y="65" class="" style="font-size:16px">1 observed / 30 days / peak 1</text>
+<path class="line" d="M28 156 L452 156"/>
+<rect x="437.87" y="92.00" width="9.13" height="64.00" class="accent"><title>07 Sep 2026: 1 observed events</title></rect>
+<text x="28" y="183" class="muted" style="font-size:14px">09 Aug 2026</text>
+<text x="352" y="183" class="muted" style="font-size:14px">07 Sep 2026</text>
+<text x="28" y="216" class="muted" style="font-size:14px">Up to 300 events / 30 days; not contributions.</text>
 </svg>
