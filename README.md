@@ -8,6 +8,8 @@
 
 `$ whoami`
 
+**Aizen Gabriel**
+
 I build software, automate infrastructure, and explore systems where engineering and artificial intelligence converge.
 
 <details>
