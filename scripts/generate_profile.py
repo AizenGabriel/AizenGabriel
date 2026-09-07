@@ -6,16 +6,17 @@ from lib.svg import document, line, text
 
 def hero(config: dict) -> str:
     profile = config['profile']
-    elements = [line(29, 29, 43, 20), line(43, 20, 43, 38), line(43, 38, 29, 29),
-                '<g class="accent"><circle cx="29" cy="29" r="3"/><circle cx="43" cy="20" r="3"/><circle cx="43" cy="38" r="3"/></g>',
-                text(59, 34, 'AIZEN // CONTROL PLANE', 'accent', 14),
-                text(28, 87, profile['name'].upper(), '', 28),
-                text(28, 116, ' · '.join(profile['roles']), 'muted', 14),
-                text(28, 159, 'ship · scale · observe · learn', 'accent', 18),
+    elements = [line(125, 29, 139, 20), line(139, 20, 139, 38), line(139, 38, 125, 29),
+                '<g class="accent"><circle cx="125" cy="29" r="3"/><circle cx="139" cy="20" r="3"/><circle cx="139" cy="38" r="3"/></g>',
+                '<g text-anchor="middle">',
+                text(240, 34, 'AIZEN // CONTROL PLANE', 'accent', 14),
+                text(240, 87, profile['name'].upper(), '', 28),
+                text(240, 116, ' · '.join(profile['roles']), 'muted', 14),
+                text(240, 159, 'ship · scale · observe · learn', 'accent', 18),
+                text(240, 218, 'BUILDING / LEARNING · v' + profile['version'], 'muted', 14),
+                '</g>',
                 line(28, 186, 452, 186),
-                '<circle class="signal pulse" cx="33" cy="213" r="4"/>',
-                text(47, 218, 'BUILDING / LEARNING', 'muted', 14),
-                text(398, 218, 'v' + profile['version'], 'muted', 14)]
+                '<circle class="signal pulse" cx="117" cy="213" r="4"/>']
     return document('Aizen // Control Plane', f"{profile['name']}. {' · '.join(profile['roles'])}. Building systems that ship, scale, observe and learn. Version {profile['version']}.", 240, elements, 'scripts/generate_profile.py')
 
 
