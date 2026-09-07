@@ -1,35 +1,36 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 372" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" role="img" aria-labelledby="title desc">
 <!-- AUTO-GENERATED FILE. Source: scripts/generate_profile.py. Do not edit manually. -->
 <title id="title">Aizen // Control Plane</title>
-<desc id="desc">Aizen Gabriel. Software Engineer · DevOps · AI. Building systems that ship, scale, observe and learn.</desc>
+<desc id="desc">Aizen Gabriel. Software Engineer · DevOps · AI. Building systems that ship, scale, observe and learn. Version 1.1.</desc>
 <style>
-svg { color: #182637; background: transparent; }
-.bg { fill: #f5f7fa; stroke: #c8d2df; }
-.panel { fill: #eaf0f6; stroke: #c8d2df; }
-text { fill: #182637; font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
-.muted { fill: #506278; } .accent { fill: #2369ac; }
-.signal { fill: #237a69; } .line { stroke: #9aaec4; fill: none; }
+svg { color: #292136; background: transparent; }
+.bg { fill: #FAF8FF; stroke: #D9CFE7; }
+.panel { fill: #F0EAFA; stroke: #D9CFE7; }
+text { fill: #292136; font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+.muted { fill: #655674; } .accent { fill: #6D28D9; }
+.signal { fill: #6D28D9; } .line { stroke: #A898BE; fill: none; }
 @media (prefers-color-scheme: dark) {
- .bg { fill: #111c2a; stroke: #34465b; }
- .panel { fill: #1b2a3c; stroke: #34465b; }
- text { fill: #e4edf7; } .muted { fill: #a0b2c8; }
- .accent { fill: #80bfff; } .signal { fill: #75cfb8; }
- .line { stroke: #526c89; }
+ .bg { fill: #171321; stroke: #493A5E; }
+ .panel { fill: #211A30; stroke: #493A5E; }
+ text { fill: #F2EDF9; } .muted { fill: #BDB0CF; }
+ .accent { fill: #C4B5FD; } .signal { fill: #C4B5FD; }
+ .line { stroke: #88749F; }
 }
 @keyframes breathe { 50% { opacity: .45; } }
 .pulse { animation: breathe 4s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
 </style>
-<rect class="bg" x="1" y="1" width="478" height="370" rx="14"/>
-<text x="28" y="38" class="accent" style="font-size:16px">AIZEN // CONTROL PLANE</text>
-<path class="line" d="M28 57 L452 57"/>
-<circle class="signal pulse" cx="35" cy="85" r="5"/>
-<text x="50" y="91" class="muted" style="font-size:14px">OPERATIONAL / ENGINEER ONLINE</text>
-<text x="28" y="151" class="" style="font-size:32px">AIZEN GABRIEL</text>
-<text x="28" y="187" class="muted" style="font-size:16px">Software Engineer · DevOps · AI</text>
-<text x="28" y="252" class="" style="font-size:24px">Building systems that</text>
-<text x="28" y="286" class="accent" style="font-size:24px">ship · scale · observe · learn</text>
-<path class="line" d="M28 319 L452 319"/>
-<text x="28" y="347" class="muted" style="font-size:14px">ENGINEERING / DEVOPS / AI</text>
-<text x="400" y="347" class="muted" style="font-size:14px">v1.0</text>
+<rect class="bg" x="1" y="1" width="478" height="238" rx="14"/>
+<path class="line" d="M29 29 L43 20"/>
+<path class="line" d="M43 20 L43 38"/>
+<path class="line" d="M43 38 L29 29"/>
+<g class="accent"><circle cx="29" cy="29" r="3"/><circle cx="43" cy="20" r="3"/><circle cx="43" cy="38" r="3"/></g>
+<text x="59" y="34" class="accent" style="font-size:14px">AIZEN // CONTROL PLANE</text>
+<text x="28" y="87" class="" style="font-size:28px">AIZEN GABRIEL</text>
+<text x="28" y="116" class="muted" style="font-size:14px">Software Engineer · DevOps · AI</text>
+<text x="28" y="159" class="accent" style="font-size:18px">ship · scale · observe · learn</text>
+<path class="line" d="M28 186 L452 186"/>
+<circle class="signal pulse" cx="33" cy="213" r="4"/>
+<text x="47" y="218" class="muted" style="font-size:14px">BUILDING / LEARNING</text>
+<text x="398" y="218" class="muted" style="font-size:14px">v1.1</text>
 </svg>

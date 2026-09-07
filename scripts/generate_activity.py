@@ -8,18 +8,31 @@ def render(data: dict) -> str:
     activity = data['activity']
     peak = max((day['events'] for day in activity), default=0)
     total = sum(day['events'] for day in activity)
-    elements = [text(28, 38, 'ACTIVITY / PUBLIC EVENTS', 'accent'),
-                text(28, 76, f'{total} observed events · {data["days"]} UTC days', '', 18),
-                text(28, 105, f'Daily peak: {peak} events', 'muted'), line(28, 232, 452, 232)]
-    step = 424 / len(activity)
-    for index, day in enumerate(activity):
-        height = day['events'] / max(peak, 1) * 100
-        elements.append(f'<rect x="{28 + index * step:.2f}" y="{232 - max(height, 2):.2f}" width="{max(step - 5, 1):.2f}" height="{max(height, 2):.2f}" class="{"accent" if height else "panel"}"><title>{day["date"]}: {day["events"]} observed events</title></rect>')
-    elements += [text(28, 262, activity[0]['date'], 'muted', 16), text(332, 262, activity[-1]['date'], 'muted', 16),
-                 text(28, 297, 'API: up to 300 events / 30 days', 'muted', 16),
-                 text(28, 323, 'CAP REACHED · history may be truncated' if data['event_limit_reached'] else 'Observed sample, not contributions', 'muted', 16)]
-    description = '; '.join(f'{day["date"]}: {day["events"]} observed events' for day in activity)
-    return document('Public GitHub activity', description, 350, elements, 'scripts/generate_activity.py')
+    elements = [text(28, 34, 'ACTIVITY / PUBLIC EVENTS', 'accent', 14)]
+    if total == 0:
+        elements.extend([text(28, 66, 'No public events observed', '', 16),
+                         text(28, 92, f'{activity[0]["date"]} → {activity[-1]["date"]} / UTC', 'muted', 14),
+                         text(28, 119, 'Returned sample only; not proof of inactivity.', 'muted', 14)])
+        height = 143
+    else:
+        elements.extend([text(28, 65, f'{total} observed / {data["days"]} days / peak {peak}', '', 16), line(28, 156, 452, 156)])
+        step = 424 / len(activity)
+        for index, day in enumerate(activity):
+            bar_height = day['events'] / peak * 64
+            if bar_height:
+                elements.append(f'<rect x="{28 + index * step:.2f}" y="{156 - bar_height:.2f}" width="{max(step - 5, 1):.2f}" height="{bar_height:.2f}" class="accent"><title>{day["date"]}: {day["events"]} observed events</title></rect>')
+        elements.extend([text(28, 183, activity[0]['date'], 'muted', 14), text(332, 183, activity[-1]['date'], 'muted', 14)])
+        height = 240
+    if data['event_limit_reached']:
+        elements.append(text(28, height - 15, '300-event cap reached; sample may be partial.', 'muted', 14))
+        if total == 0:
+            # Leave a separate line for cap information even for a short window.
+            elements[-1] = text(28, height + 4, '300-event cap reached; sample may be partial.', 'muted', 14)
+            height += 28
+    elif total:
+        elements.append(text(28, 216, 'Up to 300 events / 30 days; not contributions.', 'muted', 14))
+    description = 'Bounded public event sample. ' + '; '.join(f'{day["date"]}: {day["events"]} observed events' for day in activity)
+    return document('Public GitHub activity', description, height, elements, 'scripts/generate_activity.py')
 
 
 def main() -> None:

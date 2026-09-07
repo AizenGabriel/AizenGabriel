@@ -3,18 +3,18 @@ from html import escape
 from xml.etree import ElementTree
 
 STYLE = '''
-svg { color: #182637; background: transparent; }
-.bg { fill: #f5f7fa; stroke: #c8d2df; }
-.panel { fill: #eaf0f6; stroke: #c8d2df; }
-text { fill: #182637; font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
-.muted { fill: #506278; } .accent { fill: #2369ac; }
-.signal { fill: #237a69; } .line { stroke: #9aaec4; fill: none; }
+svg { color: #292136; background: transparent; }
+.bg { fill: #FAF8FF; stroke: #D9CFE7; }
+.panel { fill: #F0EAFA; stroke: #D9CFE7; }
+text { fill: #292136; font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+.muted { fill: #655674; } .accent { fill: #6D28D9; }
+.signal { fill: #6D28D9; } .line { stroke: #A898BE; fill: none; }
 @media (prefers-color-scheme: dark) {
- .bg { fill: #111c2a; stroke: #34465b; }
- .panel { fill: #1b2a3c; stroke: #34465b; }
- text { fill: #e4edf7; } .muted { fill: #a0b2c8; }
- .accent { fill: #80bfff; } .signal { fill: #75cfb8; }
- .line { stroke: #526c89; }
+ .bg { fill: #171321; stroke: #493A5E; }
+ .panel { fill: #211A30; stroke: #493A5E; }
+ text { fill: #F2EDF9; } .muted { fill: #BDB0CF; }
+ .accent { fill: #C4B5FD; } .signal { fill: #C4B5FD; }
+ .line { stroke: #88749F; }
 }
 @keyframes breathe { 50% { opacity: .45; } }
 .pulse { animation: breathe 4s ease-in-out infinite; }

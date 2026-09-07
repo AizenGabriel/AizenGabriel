@@ -13,7 +13,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 from lib.github import GitHub, GitHubError, collect
 from lib.profile import ROOT, atomic_write, load_profile
 from lib.svg import document, text
-from generate_profile import readme, hero, architecture
+from generate_profile import readme, hero, architecture, generate
+from generate_activity import render as render_activity
+from copy import deepcopy
 from generate_telemetry import update
 
 NOW = datetime(2026, 9, 7, 12, tzinfo=timezone.utc)
@@ -127,16 +129,79 @@ class OutputTests(unittest.TestCase):
         self.assertNotIn('<script>', svg)
         self.assertEqual(root.find('{http://www.w3.org/2000/svg}title').text, value)
 
-    def test_committed_assets_and_local_links(self):
+    def test_config_only_change_and_identity_reproducibility(self):
         config = load_profile()
-        self.assertEqual((ROOT / 'README.md').read_text(), readme(config))
-        self.assertEqual((ROOT / 'assets/static/hero.svg').read_text(), hero(config))
-        self.assertEqual((ROOT / 'assets/static/architecture.svg').read_text(), architecture(config))
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            generate(config, root)
+            changed = deepcopy(config)
+            changed['profile']['version'] = '1.2'
+            changed['featured_project']['summary'] = 'Updated from YAML only.'
+            import yaml
+            config_path = root / 'profile.yaml'
+            config_path.write_text(yaml.safe_dump(changed))
+            changed = load_profile(config_path)
+            generate(changed, root)
+            self.assertIn('v1.2', (root / 'assets/static/hero.svg').read_text())
+            self.assertIn('Updated from YAML only.', (root / 'README.md').read_text())
+            before = {p.relative_to(root): (p.read_bytes(), p.stat().st_mtime_ns)
+                      for p in root.rglob('*') if p.is_file()}
+            generate(changed, root)
+            after = {p.relative_to(root): (p.read_bytes(), p.stat().st_mtime_ns)
+                     for p in root.rglob('*') if p.is_file()}
+            self.assertEqual(before, after)
+            for path in root.rglob('*.svg'):
+                ElementTree.parse(path)
+
+    def test_profile_presentation_and_links(self):
+        import re
+        config = load_profile()
+        output = readme(config)
+        self.assertEqual(output.count('width="480"'), 4)
+        self.assertNotIn('width="100%"', output)
+        self.assertEqual(output.count('#### '), 5)
+        self.assertNotIn('LAB / IN PROGRESS', output)
+        for path in re.findall(r'(?:src="|\]\()\./([^"\)]+)', output):
+            self.assertTrue((ROOT / path.split('#')[0]).is_file(), path)
         for path in (ROOT / 'assets').rglob('*.svg'):
             ElementTree.parse(path)
-        import re
-        for path in re.findall(r'src="\./([^"]+)"', readme(config)):
-            self.assertTrue((ROOT / path).is_file(), path)
+        config['experiments'] = [{'name': 'Test lab', 'question': 'Can we observe it?',
+                                 'url': 'https://github.com/AizenGabriel/AizenGabriel'}]
+        self.assertIn('LAB / IN PROGRESS', readme(config))
+        self.assertIn('Can we observe it?', readme(config))
+
+    def test_configurable_version(self):
+        import yaml
+        config = load_profile()
+        config['profile']['version'] = '1.7'
+        self.assertIn('v1.7', hero(config))
+        config['profile']['version'] = '<script>'
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'profile.yaml'
+            path.write_text(yaml.safe_dump(config))
+            with self.assertRaisesRegex(ValueError, 'profile.version'):
+                load_profile(path)
+
+    def test_empty_and_active_timeline(self):
+        client = Mock()
+        client.pages.side_effect = [[], []]
+        data = collect(load_profile(), client, NOW)
+        empty = render_activity(data)
+        self.assertIn('No public events observed', empty)
+        self.assertIn('not proof of inactivity', empty)
+        self.assertNotIn('class="accent"><title>', empty)
+        self.assertIn('viewBox="0 0 480 143"', empty)
+        data['activity'][-1]['events'] = 5
+        active = render_activity(data)
+        self.assertIn('5 observed / 30 days / peak 5', active)
+        self.assertIn('class="accent"><title>', active)
+        self.assertIn('viewBox="0 0 480 240"', active)
+        data['event_limit_reached'] = True
+        self.assertIn('sample may be partial', render_activity(data))
+        data['activity'][-1]['events'] = 0
+        capped_empty = render_activity(data)
+        self.assertIn('sample may be partial', capped_empty)
+        ElementTree.fromstring(capped_empty)
 
     def test_workflows_and_noop_guard(self):
         import yaml
@@ -145,6 +210,11 @@ class OutputTests(unittest.TestCase):
             value = yaml.load(path.read_text(), Loader=yaml.BaseLoader)
             self.assertIn('on', value)
             self.assertIn('jobs', value)
+            steps = next(iter(value['jobs'].values()))['steps']
+            runs = [step.get('run', '') for step in steps]
+            generation = next(i for i, run in enumerate(runs) if 'python scripts/generate_profile.py' in run)
+            tests = next(i for i, run in enumerate(runs) if 'unittest discover' in run)
+            self.assertLess(generation, tests)
         workflow = yaml.load((workflows / 'update-profile.yml').read_text(), Loader=yaml.BaseLoader)
         self.assertEqual(workflow['permissions']['contents'], 'write')
         commands = workflow['jobs']['refresh']['steps'][-1]['run']

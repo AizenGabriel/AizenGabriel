@@ -8,25 +8,15 @@ from generate_activity import render as render_activity
 
 
 def render(data: dict) -> str:
-    elements = [text(28, 38, 'GITHUB / TELEMETRY', 'accent'), text(28, 70, '@' + data['handle'], 'muted'),
-                line(28, 90, 452, 90), text(28, 135, str(data['repositories']), '', 30),
-                text(98, 130, 'public repositories', 'muted'),
-                text(28, 186, str(data['active_repositories']), '', 30),
-                text(98, 181, f'pushed in {data["days"]} days¹', 'muted'),
-                text(28, 237, str(len(data['languages'])), '', 30),
-                text(98, 232, 'primary languages²', 'muted'), line(28, 259, 452, 259)]
-    languages = list(data['languages'].items())[:4]
-    if languages:
-        for index, (language, count) in enumerate(languages):
-            elements.append(text(28, 289 + index * 27, f'{language[:26]} / {count} repos', 'accent'))
-    else:
-        elements.append(text(28, 289, 'No primary language reported', 'muted'))
-    foot = 300 + max(len(languages), 1) * 27
-    elements.extend([text(28, foot + 20, '¹ Owned; excludes forks and archives.', 'muted', 16),
-                     text(28, foot + 47, '² Primary languages; includes forks.', 'muted', 16),
-                     text(28, foot + 89, 'LAST SUCCESSFUL SYNC / UTC', 'accent', 16),
-                     text(28, foot + 116, data['synced_at'], 'muted')])
-    return document('GitHub telemetry', f"{data['repositories']} public owned repositories. {data['active_repositories']} non-fork, non-archived repositories pushed in {data['days']} days. {len(data['languages'])} primary languages. Last synchronization {data['synced_at']}.", foot + 145, elements, 'scripts/generate_telemetry.py')
+    elements = [text(28, 34, 'GITHUB / TELEMETRY', 'accent', 14),
+                text(28, 74, data['repositories'], '', 22), text(90, 72, 'public repositories', 'muted', 14),
+                text(28, 108, data['active_repositories'], '', 22), text(90, 106, f'pushed in {data["days"]} days¹', 'muted', 14),
+                text(28, 142, len(data['languages']), '', 22), text(90, 140, 'primary languages²', 'muted', 14),
+                line(28, 159, 452, 159),
+                text(28, 184, '¹ Excludes forks and archives.', 'muted', 14),
+                text(28, 207, '² Repository primary languages only.', 'muted', 14),
+                text(28, 240, 'SYNC / ' + data['synced_at'], 'accent', 14)]
+    return document('GitHub telemetry', f"{data['repositories']} public owned repositories. {data['active_repositories']} non-fork, non-archived repositories pushed in {data['days']} days. {len(data['languages'])} primary languages, including forks. Last synchronization {data['synced_at']}.", 264, elements, 'scripts/generate_telemetry.py')
 
 
 def update(config: dict, output=ROOT / 'assets/generated', client=None, now=None) -> None:

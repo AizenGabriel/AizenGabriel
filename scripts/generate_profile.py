@@ -7,76 +7,84 @@ from lib.svg import document, line, text
 
 def hero(config: dict) -> str:
     profile = config['profile']
-    elements = [text(28, 38, 'AIZEN // CONTROL PLANE', 'accent'),
-                line(28, 57, 452, 57),
-                '<circle class="signal pulse" cx="35" cy="85" r="5"/>',
-                text(50, 91, 'OPERATIONAL / ENGINEER ONLINE', 'muted', 14),
-                text(28, 151, profile['name'].upper(), '', 32),
-                text(28, 187, ' · '.join(profile['roles']), 'muted', 16),
-                text(28, 252, 'Building systems that', '', 24),
-                text(28, 286, 'ship · scale · observe · learn', 'accent', 24),
-                line(28, 319, 452, 319),
-                text(28, 347, 'ENGINEERING / DEVOPS / AI', 'muted', 14),
-                text(400, 347, 'v1.0', 'muted', 14)]
-    return document('Aizen // Control Plane', f"{profile['name']}. {' · '.join(profile['roles'])}. Building systems that ship, scale, observe and learn.", 372, elements, 'scripts/generate_profile.py')
+    elements = [line(29, 29, 43, 20), line(43, 20, 43, 38), line(43, 38, 29, 29),
+                '<g class="accent"><circle cx="29" cy="29" r="3"/><circle cx="43" cy="20" r="3"/><circle cx="43" cy="38" r="3"/></g>',
+                text(59, 34, 'AIZEN // CONTROL PLANE', 'accent', 14),
+                text(28, 87, profile['name'].upper(), '', 28),
+                text(28, 116, ' · '.join(profile['roles']), 'muted', 14),
+                text(28, 159, 'ship · scale · observe · learn', 'accent', 18),
+                line(28, 186, 452, 186),
+                '<circle class="signal pulse" cx="33" cy="213" r="4"/>',
+                text(47, 218, 'BUILDING / LEARNING', 'muted', 14),
+                text(398, 218, 'v' + profile['version'], 'muted', 14)]
+    return document('Aizen // Control Plane', f"{profile['name']}. {' · '.join(profile['roles'])}. Building systems that ship, scale, observe and learn. Version {profile['version']}.", 240, elements, 'scripts/generate_profile.py')
 
 
 def architecture(config: dict) -> str:
-    trajectory = config['trajectory']
-    elements = [text(28, 38, 'SYSTEM TOPOLOGY', 'accent'), text(28, 68, 'One trajectory. Connected layers.', 'muted')]
-    for index, stage in enumerate(trajectory):
-        y = 102 + index * 63
-        elements.extend([f'<rect x="28" y="{y}" width="424" height="44" rx="7" class="panel"/>',
-                         text(44, y + 28, f'{index + 1:02}', 'accent'), text(90, y + 28, stage.upper(), '', 18)])
-        if index < len(trajectory) - 1:
-            elements.extend([line(57, y + 44, 57, y + 63), line(52, y + 57, 57, y + 62), line(62, y + 57, 57, y + 62)])
-    elements.extend([text(28, 115 + len(trajectory) * 63, 'OBSERVE → LEARN → FEED BACK', 'muted', 14),
+    nodes = config['architecture']['nodes']
+    elements = [text(28, 34, 'SYSTEM TOPOLOGY', 'accent', 14)]
+    # Clockwise loop: delivery, observation, automation, and feedback into software.
+    for label, (x, y) in zip(nodes, [(28, 57), (264, 57), (264, 139), (28, 139)]):
+        elements.extend([f'<rect x="{x}" y="{y}" width="188" height="44" rx="7" class="panel"/>',
+                         text(x + 12, y + 27, label.upper(), '', 14)])
+    elements.extend([line(216, 79, 264, 79), line(258, 74, 264, 79), line(258, 84, 264, 79),
+                     line(358, 101, 358, 139), line(353, 133, 358, 139), line(363, 133, 358, 139),
+                     line(264, 161, 216, 161), line(222, 156, 216, 161), line(222, 166, 216, 161),
+                     line(122, 139, 122, 101), line(117, 107, 122, 101), line(127, 107, 122, 101),
+                     text(170, 126, 'FEEDBACK', 'muted', 14),
+                     '<path class="line" stroke-dasharray="4 5" d="M122 183 V217 H264"/>',
+                     text(275, 222, config['architecture']['exploration'], 'accent', 14),
                      '<metadata>NODE 0x539: the control plane observes itself.</metadata>'])
-    return document('Engineering to autonomous systems', ' → '.join(trajectory) + '. Observations feed back into engineering.', 140 + len(trajectory) * 63, elements, 'scripts/generate_profile.py')
+    return document('Engineering feedback loop', 'Software is delivered to infrastructure. Observability informs automation, which feeds back into software. AI is a direction of exploration.', 248, elements, 'scripts/generate_profile.py')
 
 
 def md(value: object) -> str:
     return escape(str(value)).replace('|', '&#124;').replace('\n', ' ').replace('`', '&#96;')
 
 
+def picture(path: str, alt: str) -> str:
+    return f'<p align="center">\n  <img src="./assets/{path}.svg" width="480" alt="{escape(alt, quote=True)}">\n</p>'
+
+
 def readme(config: dict) -> str:
     p = config['profile']
-    parts = ['<p align="center">\n  <img src="./assets/static/hero.svg" width="100%" alt="Aizen Gabriel — Software Engineer · DevOps · AI. Building systems that ship, scale, observe and learn.">\n</p>',
-             '<!-- AUTO-GENERATED: scripts/generate_profile.py; edit config/profile.yaml. -->',
-             '### 01 / SYSTEM IDENTITY', '`$ whoami`', f"**{md(p['name'])}** · {md(' · '.join(p['roles']))}", md(p['statement']),
-             '### 02 / SYSTEM STATUS', '`$ system.status`',
-             '| Subsystem | State |\n| :--- | :--- |\n' + '\n'.join(f"| {md(name)} | `{md(group['state'])}` |" for name, group in config['focus'].items()) + '\n| Observability | `MONITORING` |',
-             'States describe the profile’s operating model; they are not skill ratings or uptime measurements.',
-             '### 03 / ENGINEER RESOURCE', '`$ kubectl describe engineer aizen`']
-    for name, group in config['focus'].items():
-        parts.append(f"**{md(name)}** / {md(group['scope'])}\n\n" + ' · '.join(md(item) for item in group['capabilities']))
+    project = config['featured_project']
     manifest = {'apiVersion': 'engineering.aizen.dev/v1', 'kind': 'Engineer',
                 'metadata': {'name': p['handle'].lower()},
                 'spec': {'focus': list(config['focus']), 'principles': config['principles'],
                          'aiMode': 'interests-and-experimentation'}, 'status': {'phase': 'Running'}}
-    parts.extend(['<details>\n<summary>Inspect declarative manifest</summary>\n\n```yaml\n' + yaml.safe_dump(manifest, sort_keys=False, allow_unicode=True).rstrip() + '\n```\n\n</details>',
-                  '### 04 / ARCHITECTURE', md(p['narrative']),
-                  '<img src="./assets/static/architecture.svg" width="100%" alt="Software → Automation → Infrastructure → Observability → Intelligence → Autonomous Systems. Learning feeds back into engineering.">',
-                  '### 05 / CURRENT PROCESSES', '`$ process.list`',
-                  '| PID | Process | State |\n| :--- | :--- | :--- |\n' + '\n'.join(f"| {md(item['pid'])} | {md(item['name']).replace('-', '-<wbr>')} | {md(item['state'])} |" for item in config['processes']),
-                  '### 06 / LIVE TELEMETRY',
-                  '<img src="./assets/generated/telemetry.svg" width="100%" alt="Public GitHub repository telemetry; counts and synchronization time are available in the linked data snapshot.">',
-                  '<img src="./assets/generated/activity.svg" width="100%" alt="Daily observed public GitHub events, with UTC dates and sample limits. Accessible values are available in the linked data snapshot.">',
-                  'Public API observations, refreshed daily. Activity is a bounded event sample, not a contribution or commit total. Zero means no events returned for that day. See the [data snapshot](./assets/generated/telemetry.json) for values and the last successful synchronization.',
-                  '### 07 / ENGINEERING DIRECTIVES',
-                  '| Directive | Operating principle |\n| :--- | :--- |\n' + '\n'.join(f'| {md(key)} | {md(value)} |' for key, value in config['principles'].items()),
-                  '### 08 / CONNECT', ' · '.join(f'[{md(label)}]({url})' for label, url in config.get('links', {}).items()),
+    capabilities = '\n\n'.join(f"**{md(name)}** / {md(group['scope'])}\n\n" + ' · '.join(md(item) for item in group['capabilities'])
+                               for name, group in config['focus'].items())
+    parts = [picture('static/hero', f"{p['name']} — {' · '.join(p['roles'])}. Ship, scale, observe and learn. v{p['version']}"),
+             '<!-- AUTO-GENERATED: scripts/generate_profile.py; edit config/profile.yaml. -->',
+             '#### 01 / IDENTITY', '`$ whoami`', md(p['statement']),
+             '<details>\n<summary>Inspect engineer resource</summary>\n\n' + capabilities +
+             '\n\n```yaml\n' + yaml.safe_dump(manifest, sort_keys=False, allow_unicode=True).rstrip() + '\n```\n\n</details>',
+             '#### 02 / FEATURED PROJECT', f"**{md(project['name'])}** — {md(project['summary'])}",
+             ' · '.join(md(item) for item in project['technologies']),
+             '\n'.join('- ' + md(item) for item in project['decisions']),
+             f"[Source]({project['source']}) · [How it works]({project['documentation']})", md(project['maintenance']),
+             '#### 03 / ARCHITECTURE', md(p['narrative']),
+             picture('static/architecture', 'Software → Infrastructure → Observability → Automation → Software. AI is a direction of exploration.')]
+    if config.get('experiments'):
+        parts.extend(['**LAB / IN PROGRESS**', '\n\n'.join(
+            f"**{md(item['name'])}** — {md(item['question'])} [Follow the work]({item['url']})" for item in config['experiments'])])
+    parts.extend(['#### 04 / PUBLIC TELEMETRY',
+                  picture('generated/telemetry', 'Public repository counts and last successful synchronization. Text values are available in the data snapshot below.'),
+                  picture('generated/activity', 'Observed public GitHub events by UTC day. A bounded sample, not a contribution total.'),
+                  'Refreshed daily. Public events are a bounded sample, not commit totals. '
+                  '[Data & last sync](./assets/generated/telemetry.json) · [Metric definitions](./docs/DEVELOPMENT.md#metric-contracts)',
+                  '#### 05 / CONNECT', ' · '.join(f'[{md(label)}]({url})' for label, url in config.get('links', {}).items()),
                   '`$ exit 0`', '<!--\nSource inspection acknowledged.\n$ control-plane inspect --layer beneath-the-interface\nACCESS: ENGINEER\nThe next layer is the system that keeps this one honest.\nTrace: scripts/lib/github.py\n-->'])
     return '\n\n'.join(parts) + '\n'
 
 
-def main() -> None:
-    config = load_profile()
-    outputs = {ROOT / 'README.md': readme(config), ROOT / 'assets/static/hero.svg': hero(config),
-               ROOT / 'assets/static/architecture.svg': architecture(config)}
+def generate(config: dict, output=ROOT) -> None:
+    outputs = {output / 'README.md': readme(config), output / 'assets/static/hero.svg': hero(config),
+               output / 'assets/static/architecture.svg': architecture(config)}
     for path, content in outputs.items():
         atomic_write(path, content)
 
 
 if __name__ == '__main__':
-    main()
+    generate(load_profile())

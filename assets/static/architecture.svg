@@ -1,61 +1,49 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 518" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 248" role="img" aria-labelledby="title desc">
 <!-- AUTO-GENERATED FILE. Source: scripts/generate_profile.py. Do not edit manually. -->
-<title id="title">Engineering to autonomous systems</title>
-<desc id="desc">Software → Automation → Infrastructure → Observability → Intelligence → Autonomous Systems. Observations feed back into engineering.</desc>
+<title id="title">Engineering feedback loop</title>
+<desc id="desc">Software is delivered to infrastructure. Observability informs automation, which feeds back into software. AI is a direction of exploration.</desc>
 <style>
-svg { color: #182637; background: transparent; }
-.bg { fill: #f5f7fa; stroke: #c8d2df; }
-.panel { fill: #eaf0f6; stroke: #c8d2df; }
-text { fill: #182637; font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
-.muted { fill: #506278; } .accent { fill: #2369ac; }
-.signal { fill: #237a69; } .line { stroke: #9aaec4; fill: none; }
+svg { color: #292136; background: transparent; }
+.bg { fill: #FAF8FF; stroke: #D9CFE7; }
+.panel { fill: #F0EAFA; stroke: #D9CFE7; }
+text { fill: #292136; font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+.muted { fill: #655674; } .accent { fill: #6D28D9; }
+.signal { fill: #6D28D9; } .line { stroke: #A898BE; fill: none; }
 @media (prefers-color-scheme: dark) {
- .bg { fill: #111c2a; stroke: #34465b; }
- .panel { fill: #1b2a3c; stroke: #34465b; }
- text { fill: #e4edf7; } .muted { fill: #a0b2c8; }
- .accent { fill: #80bfff; } .signal { fill: #75cfb8; }
- .line { stroke: #526c89; }
+ .bg { fill: #171321; stroke: #493A5E; }
+ .panel { fill: #211A30; stroke: #493A5E; }
+ text { fill: #F2EDF9; } .muted { fill: #BDB0CF; }
+ .accent { fill: #C4B5FD; } .signal { fill: #C4B5FD; }
+ .line { stroke: #88749F; }
 }
 @keyframes breathe { 50% { opacity: .45; } }
 .pulse { animation: breathe 4s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
 </style>
-<rect class="bg" x="1" y="1" width="478" height="516" rx="14"/>
-<text x="28" y="38" class="accent" style="font-size:16px">SYSTEM TOPOLOGY</text>
-<text x="28" y="68" class="muted" style="font-size:16px">One trajectory. Connected layers.</text>
-<rect x="28" y="102" width="424" height="44" rx="7" class="panel"/>
-<text x="44" y="130" class="accent" style="font-size:16px">01</text>
-<text x="90" y="130" class="" style="font-size:18px">SOFTWARE</text>
-<path class="line" d="M57 146 L57 165"/>
-<path class="line" d="M52 159 L57 164"/>
-<path class="line" d="M62 159 L57 164"/>
-<rect x="28" y="165" width="424" height="44" rx="7" class="panel"/>
-<text x="44" y="193" class="accent" style="font-size:16px">02</text>
-<text x="90" y="193" class="" style="font-size:18px">AUTOMATION</text>
-<path class="line" d="M57 209 L57 228"/>
-<path class="line" d="M52 222 L57 227"/>
-<path class="line" d="M62 222 L57 227"/>
-<rect x="28" y="228" width="424" height="44" rx="7" class="panel"/>
-<text x="44" y="256" class="accent" style="font-size:16px">03</text>
-<text x="90" y="256" class="" style="font-size:18px">INFRASTRUCTURE</text>
-<path class="line" d="M57 272 L57 291"/>
-<path class="line" d="M52 285 L57 290"/>
-<path class="line" d="M62 285 L57 290"/>
-<rect x="28" y="291" width="424" height="44" rx="7" class="panel"/>
-<text x="44" y="319" class="accent" style="font-size:16px">04</text>
-<text x="90" y="319" class="" style="font-size:18px">OBSERVABILITY</text>
-<path class="line" d="M57 335 L57 354"/>
-<path class="line" d="M52 348 L57 353"/>
-<path class="line" d="M62 348 L57 353"/>
-<rect x="28" y="354" width="424" height="44" rx="7" class="panel"/>
-<text x="44" y="382" class="accent" style="font-size:16px">05</text>
-<text x="90" y="382" class="" style="font-size:18px">INTELLIGENCE</text>
-<path class="line" d="M57 398 L57 417"/>
-<path class="line" d="M52 411 L57 416"/>
-<path class="line" d="M62 411 L57 416"/>
-<rect x="28" y="417" width="424" height="44" rx="7" class="panel"/>
-<text x="44" y="445" class="accent" style="font-size:16px">06</text>
-<text x="90" y="445" class="" style="font-size:18px">AUTONOMOUS SYSTEMS</text>
-<text x="28" y="493" class="muted" style="font-size:14px">OBSERVE → LEARN → FEED BACK</text>
+<rect class="bg" x="1" y="1" width="478" height="246" rx="14"/>
+<text x="28" y="34" class="accent" style="font-size:14px">SYSTEM TOPOLOGY</text>
+<rect x="28" y="57" width="188" height="44" rx="7" class="panel"/>
+<text x="40" y="84" class="" style="font-size:14px">SOFTWARE</text>
+<rect x="264" y="57" width="188" height="44" rx="7" class="panel"/>
+<text x="276" y="84" class="" style="font-size:14px">INFRASTRUCTURE</text>
+<rect x="264" y="139" width="188" height="44" rx="7" class="panel"/>
+<text x="276" y="166" class="" style="font-size:14px">OBSERVABILITY</text>
+<rect x="28" y="139" width="188" height="44" rx="7" class="panel"/>
+<text x="40" y="166" class="" style="font-size:14px">AUTOMATION</text>
+<path class="line" d="M216 79 L264 79"/>
+<path class="line" d="M258 74 L264 79"/>
+<path class="line" d="M258 84 L264 79"/>
+<path class="line" d="M358 101 L358 139"/>
+<path class="line" d="M353 133 L358 139"/>
+<path class="line" d="M363 133 L358 139"/>
+<path class="line" d="M264 161 L216 161"/>
+<path class="line" d="M222 156 L216 161"/>
+<path class="line" d="M222 166 L216 161"/>
+<path class="line" d="M122 139 L122 101"/>
+<path class="line" d="M117 107 L122 101"/>
+<path class="line" d="M127 107 L122 101"/>
+<text x="170" y="126" class="muted" style="font-size:14px">FEEDBACK</text>
+<path class="line" stroke-dasharray="4 5" d="M122 183 V217 H264"/>
+<text x="275" y="222" class="accent" style="font-size:14px">AI / EXPLORATION</text>
 <metadata>NODE 0x539: the control plane observes itself.</metadata>
 </svg>
