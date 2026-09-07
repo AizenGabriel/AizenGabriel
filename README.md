@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./assets/static/hero.svg" width="480" alt="Aizen Gabriel — Software Engineer · DevOps · AI. Ship, scale, observe and learn. v1.1">
+  <img src="./assets/static/hero.svg" width="480" alt="Aizen Gabriel — Software Engineer · DevOps · AI. Ship, scale, observe and learn. v1.2">
 </p>
 
 <!-- AUTO-GENERATED: scripts/generate_profile.py; edit config/profile.yaml. -->
@@ -11,41 +11,19 @@
 I build software, automate infrastructure, and explore systems where engineering and artificial intelligence converge.
 
 <details>
-<summary>Inspect engineer resource</summary>
+<summary>Inspect Engineer Resource</summary>
 
-**Engineering** / Engineering focus
+**Engineering**
 
 Backend Engineering · APIs · System Architecture · Distributed Systems · Automation
 
-**Infrastructure** / Infrastructure focus
+**Infrastructure**
 
 Containers · Kubernetes · Infrastructure as Code · CI/CD · Linux · Observability
 
-**Artificial Intelligence** / Interests and experimentation
+**Artificial Intelligence**
 
 LLM Applications · AI Agents · RAG · AI Automation · AI Infrastructure
-
-```yaml
-apiVersion: engineering.aizen.dev/v1
-kind: Engineer
-metadata:
-  name: aizengabriel
-spec:
-  focus:
-  - Engineering
-  - Infrastructure
-  - Artificial Intelligence
-  principles:
-    automation: automate repeatable work
-    observability: systems should explain themselves
-    reliability: design for failure
-    simplicity: complexity must earn its place
-    scalability: scale intentionally
-    learning: remain permanently unfinished
-  aiMode: interests-and-experimentation
-status:
-  phase: Running
-```
 
 </details>
 
@@ -55,13 +33,7 @@ status:
 
 Python · SVG · YAML · GitHub Actions
 
-- One declarative source for identity and content.
-- Public API observations with explicit sample limits.
-- Reproducible assets and failure-safe refreshes.
-
-[Source](https://github.com/AizenGabriel/AizenGabriel) · [How it works](./docs/DEVELOPMENT.md)
-
-Current work — refining the interface and testing the automation.
+[Source](https://github.com/AizenGabriel/AizenGabriel) · [How It Works](./docs/DEVELOPMENT.md)
 
 #### 03 / ARCHITECTURE
 
@@ -81,7 +53,7 @@ I build systems that operate software — and explore systems that reason about 
   <img src="./assets/generated/activity.svg" width="480" alt="Observed public GitHub events by UTC day. A bounded sample, not a contribution total.">
 </p>
 
-Refreshed daily. Public events are a bounded sample, not commit totals. [Data & last sync](./assets/generated/telemetry.json) · [Metric definitions](./docs/DEVELOPMENT.md#metric-contracts)
+Refreshed daily. Public events are a bounded sample, not commit totals. [Data & Last Sync](./assets/generated/telemetry.json) · [Metric Definitions](./docs/DEVELOPMENT.md#metric-contracts)
 
 #### 05 / CONNECT
 

@@ -1,7 +1,9 @@
 # Aizen Control Plane
 
-The canonical specification is [docs/specs/SPEC.md — Aizen Control Plane.md](<docs/specs/SPEC.md — Aizen Control Plane.md>).
+The Canonical Specification is [docs/specs/PLAN.md — Aizen Control Plane.md](<docs/specs/PLAN.md — Aizen Control Plane.md>).
 
-Maintenance and metric definitions: [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
+Maintenance and Metric Definitions: [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md).
 
-Approved v1.1 changes: [English implementation plan](<docs/specs/PLAN.md — Aizen Control Plane v1.1.md>).
+Approved v1.1 changes: [English Implementation Plan](<docs/specs/PLAN.md — Aizen Control Plane v1.1.md>).
+
+Approved v1.2 changes: [English Implementation Plan](<docs/specs/PLAN.md — Aizen Control Plane v1.2.md>).

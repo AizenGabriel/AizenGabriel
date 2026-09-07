@@ -1,5 +1,5 @@
 profile:
-  version: "1.1"
+  version: "1.2"
   name: Aizen Gabriel
   handle: AizenGabriel
   roles: [Software Engineer, DevOps, AI]
@@ -7,36 +7,18 @@ profile:
   narrative: I build systems that operate software — and explore systems that reason about it.
 focus:
   Engineering:
-    state: OPERATIONAL
-    scope: Engineering focus
     capabilities: [Backend Engineering, APIs, System Architecture, Distributed Systems, Automation]
   Infrastructure:
-    state: AUTOMATED
-    scope: Infrastructure focus
     capabilities: [Containers, Kubernetes, Infrastructure as Code, CI/CD, Linux, Observability]
   Artificial Intelligence:
-    state: EVOLVING
-    scope: Interests and experimentation
     capabilities: [LLM Applications, AI Agents, RAG, AI Automation, AI Infrastructure]
 featured_project:
   name: Aizen Control Plane
   summary: A small GitHub profile system, built to maintain itself.
   technologies: [Python, SVG, YAML, GitHub Actions]
-  decisions:
-    - One declarative source for identity and content.
-    - Public API observations with explicit sample limits.
-    - Reproducible assets and failure-safe refreshes.
-  maintenance: Current work — refining the interface and testing the automation.
   source: https://github.com/AizenGabriel/AizenGabriel
   documentation: ./docs/DEVELOPMENT.md
 experiments: []
-principles:
-  automation: automate repeatable work
-  observability: systems should explain themselves
-  reliability: design for failure
-  simplicity: complexity must earn its place
-  scalability: scale intentionally
-  learning: remain permanently unfinished
 architecture:
   nodes: [Software, Infrastructure, Observability, Automation]
   exploration: AI / EXPLORATION

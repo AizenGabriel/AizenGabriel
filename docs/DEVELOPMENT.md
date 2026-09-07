@@ -1,7 +1,7 @@
 # Maintaining the control plane
 
 `config/profile.yaml` is the manually maintained profile source. The English copy
-follows the specification. AI capabilities are explicitly interests and experiments.
+follows the specification. AI remains a direction of exploration in the profile narrative and topology.
 Only the configured GitHub contact is included. MIT is the initial project license.
 The canonical specification remains in `docs/specs/`; root `SPEC.md` links to it.
 
@@ -46,16 +46,18 @@ without adding an application server or external hosting.
 
 ### Content configuration
 
-- `profile.version` is a quoted version string, currently `"1.1"`. It controls the
-  visible hero version; it is separate from the engineer manifest API version.
-- `featured_project` supplies the name, summary, technologies, decisions,
-  maintenance note, source URL, and documentation link. The Control Plane is the
+- `profile.version` is a quoted version string, currently `"1.2"`. It controls the
+  visible hero version.
+- `featured_project` supplies the name, summary, technologies, source URL,
+  and documentation link. The Control Plane is the
   only configured project.
 - `experiments` defaults to an empty list. Each real experiment has `name`,
   `question`, and `url`; an empty list omits the lab block.
 - `architecture.nodes` defines four clockwise feedback-loop labels, and
   `architecture.exploration` labels the dashed exploration branch.
-- Capabilities and principles remain available in the engineer disclosure.
+- Capability lists remain available under **Inspect Engineer Resource**. Scope
+  suffixes, the engineer manifest, and project decision/maintenance copy were
+  removed in v1.2; their unused configuration fields were removed too.
 
 The v1.1 implementation plan is recorded in
 [the English plan](<specs/PLAN.md — Aizen Control Plane v1.1.md>).
@@ -141,3 +143,17 @@ The production snapshot was retained unchanged; restyling does not represent a n
 API synchronization. GitHub's Markdown API preserved all four 480 px image widths,
 the five primary sections, alternative text, and the engineer disclosure. Final
 published layout and workflow execution remain checks to perform after push.
+
+
+## v1.2 presentation
+
+The [v1.2 English plan](<specs/PLAN.md — Aizen Control Plane v1.2.md>) records
+this revision. Display dates use explicit English month abbreviations, such as
+`07 Sep 2026`; synchronization uses `07 Sep 2026, 16:23 UTC`. Shared presentation
+helpers also format chart tooltips and accessible SVG descriptions. API processing,
+UTC activity grouping, and ISO values in the JSON snapshot are unchanged.
+
+v1.2 validation: 18 tests passed. SVG previews were inspected at 320 and 480 px
+in light/dark themes, including empty and populated activity. GitHub's Markdown
+renderer preserved the updated labels, four compact images, and disclosure without
+the manifest. The checked-in JSON snapshot was not modified or refreshed.

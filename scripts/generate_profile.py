@@ -1,6 +1,5 @@
 """Render the profile and identity assets from a single declarative source."""
 from html import escape
-import yaml
 from lib.profile import ROOT, atomic_write, load_profile
 from lib.svg import document, line, text
 
@@ -49,21 +48,16 @@ def picture(path: str, alt: str) -> str:
 def readme(config: dict) -> str:
     p = config['profile']
     project = config['featured_project']
-    manifest = {'apiVersion': 'engineering.aizen.dev/v1', 'kind': 'Engineer',
-                'metadata': {'name': p['handle'].lower()},
-                'spec': {'focus': list(config['focus']), 'principles': config['principles'],
-                         'aiMode': 'interests-and-experimentation'}, 'status': {'phase': 'Running'}}
-    capabilities = '\n\n'.join(f"**{md(name)}** / {md(group['scope'])}\n\n" + ' · '.join(md(item) for item in group['capabilities'])
+    capabilities = '\n\n'.join(f"**{md(name)}**\n\n" + ' · '.join(md(item) for item in group['capabilities'])
                                for name, group in config['focus'].items())
     parts = [picture('static/hero', f"{p['name']} — {' · '.join(p['roles'])}. Ship, scale, observe and learn. v{p['version']}"),
              '<!-- AUTO-GENERATED: scripts/generate_profile.py; edit config/profile.yaml. -->',
              '#### 01 / IDENTITY', '`$ whoami`', md(p['statement']),
-             '<details>\n<summary>Inspect engineer resource</summary>\n\n' + capabilities +
-             '\n\n```yaml\n' + yaml.safe_dump(manifest, sort_keys=False, allow_unicode=True).rstrip() + '\n```\n\n</details>',
+             '<details>\n<summary>Inspect Engineer Resource</summary>\n\n' + capabilities +
+             '\n\n</details>',
              '#### 02 / FEATURED PROJECT', f"**{md(project['name'])}** — {md(project['summary'])}",
              ' · '.join(md(item) for item in project['technologies']),
-             '\n'.join('- ' + md(item) for item in project['decisions']),
-             f"[Source]({project['source']}) · [How it works]({project['documentation']})", md(project['maintenance']),
+             f"[Source]({project['source']}) · [How It Works]({project['documentation']})",
              '#### 03 / ARCHITECTURE', md(p['narrative']),
              picture('static/architecture', 'Software → Infrastructure → Observability → Automation → Software. AI is a direction of exploration.')]
     if config.get('experiments'):
@@ -73,7 +67,7 @@ def readme(config: dict) -> str:
                   picture('generated/telemetry', 'Public repository counts and last successful synchronization. Text values are available in the data snapshot below.'),
                   picture('generated/activity', 'Observed public GitHub events by UTC day. A bounded sample, not a contribution total.'),
                   'Refreshed daily. Public events are a bounded sample, not commit totals. '
-                  '[Data & last sync](./assets/generated/telemetry.json) · [Metric definitions](./docs/DEVELOPMENT.md#metric-contracts)',
+                  '[Data & Last Sync](./assets/generated/telemetry.json) · [Metric Definitions](./docs/DEVELOPMENT.md#metric-contracts)',
                   '#### 05 / CONNECT', ' · '.join(f'[{md(label)}]({url})' for label, url in config.get('links', {}).items()),
                   '`$ exit 0`', '<!--\nSource inspection acknowledged.\n$ control-plane inspect --layer beneath-the-interface\nACCESS: ENGINEER\nThe next layer is the system that keeps this one honest.\nTrace: scripts/lib/github.py\n-->'])
     return '\n\n'.join(parts) + '\n'

@@ -203,6 +203,59 @@ class OutputTests(unittest.TestCase):
         self.assertIn('sample may be partial', capped_empty)
         ElementTree.fromstring(capped_empty)
 
+    def test_v12_content(self):
+        config = load_profile()
+        output = readme(config)
+        for label in ['Inspect Engineer Resource', '[Source]', '[How It Works]',
+                      '[Data & Last Sync]', '[Metric Definitions]']:
+            self.assertIn(label, output)
+        for name, group in config['focus'].items():
+            self.assertIn(f'**{name}**\n\n', output)
+            for capability in group['capabilities']:
+                self.assertIn(capability, output)
+        for removed in ['apiVersion:', '```yaml', 'Engineering focus', 'Infrastructure focus',
+                        'Current work', 'One declarative source for identity and content.',
+                        'Public API observations with explicit sample limits.',
+                        'Reproducible assets and failure-safe refreshes.']:
+            self.assertNotIn(removed, output)
+        self.assertIn('v1.2', hero(config))
+        self.assertIn('Refreshed daily. Public events are a bounded sample, not commit totals.', output)
+
+    def test_english_dates_and_utc(self):
+        from lib.dates import format_date, format_timestamp
+        cases = [('2025-12-31', '31 Dec 2025'), ('2026-01-01', '01 Jan 2026'),
+                 ('2024-02-29', '29 Feb 2024'), ('2026-09-07', '07 Sep 2026')]
+        for source, expected in cases:
+            self.assertEqual(format_date(source), expected)
+        self.assertEqual(format_timestamp('2026-09-07T16:23:59Z'), '07 Sep 2026, 16:23 UTC')
+        self.assertEqual(format_timestamp('2026-01-01T01:15:00+02:00'), '31 Dec 2025, 23:15 UTC')
+        with self.assertRaises(ValueError):
+            format_timestamp('2026-09-07T16:23:00')
+
+    def test_formatted_svg_dates_preserve_snapshot(self):
+        from generate_telemetry import render as render_telemetry
+        path = ROOT / 'assets/generated/telemetry.json'
+        before = path.read_bytes()
+        data = json.loads(before)
+        original = deepcopy(data)
+        from lib.dates import format_date, format_timestamp
+        telemetry = render_telemetry(data)
+        self.assertIn(format_timestamp(data['synced_at']), telemetry)
+        self.assertNotIn(data['synced_at'], telemetry)
+        for count in [0, 3]:
+            sample = deepcopy(data)
+            for day in sample['activity']:
+                day['events'] = count
+            svg = render_activity(sample)
+            self.assertIn(format_date(sample['activity'][0]['date']), svg)
+            self.assertNotIn(sample['activity'][0]['date'], svg)
+            root = ElementTree.fromstring(svg)
+            self.assertIn(format_date(sample['activity'][-1]['date']),
+                          root.find('{http://www.w3.org/2000/svg}desc').text)
+            self.assertEqual(svg, render_activity(sample))
+        self.assertEqual(data, original)
+        self.assertEqual(path.read_bytes(), before)
+
     def test_workflows_and_noop_guard(self):
         import yaml
         workflows = ROOT / '.github/workflows'

@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 240" role="img" aria-labelledby="title desc">
 <!-- AUTO-GENERATED FILE. Source: scripts/generate_profile.py. Do not edit manually. -->
 <title id="title">Aizen // Control Plane</title>
-<desc id="desc">Aizen Gabriel. Software Engineer · DevOps · AI. Building systems that ship, scale, observe and learn. Version 1.1.</desc>
+<desc id="desc">Aizen Gabriel. Software Engineer · DevOps · AI. Building systems that ship, scale, observe and learn. Version 1.2.</desc>
 <style>
 svg { color: #292136; background: transparent; }
 .bg { fill: #FAF8FF; stroke: #D9CFE7; }
@@ -32,5 +32,5 @@ text { fill: #292136; font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Co
 <path class="line" d="M28 186 L452 186"/>
 <circle class="signal pulse" cx="33" cy="213" r="4"/>
 <text x="47" y="218" class="muted" style="font-size:14px">BUILDING / LEARNING</text>
-<text x="398" y="218" class="muted" style="font-size:14px">v1.1</text>
+<text x="398" y="218" class="muted" style="font-size:14px">v1.2</text>
 </svg>

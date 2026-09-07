@@ -2,6 +2,7 @@
 import json
 import sys
 from lib.github import collect
+from lib.dates import format_timestamp
 from lib.profile import ROOT, atomic_write, load_profile
 from lib.svg import document, line, text
 from generate_activity import render as render_activity
@@ -15,8 +16,8 @@ def render(data: dict) -> str:
                 line(28, 159, 452, 159),
                 text(28, 184, '¹ Excludes forks and archives.', 'muted', 14),
                 text(28, 207, '² Repository primary languages only.', 'muted', 14),
-                text(28, 240, 'SYNC / ' + data['synced_at'], 'accent', 14)]
-    return document('GitHub telemetry', f"{data['repositories']} public owned repositories. {data['active_repositories']} non-fork, non-archived repositories pushed in {data['days']} days. {len(data['languages'])} primary languages, including forks. Last synchronization {data['synced_at']}.", 264, elements, 'scripts/generate_telemetry.py')
+                text(28, 240, 'SYNC / ' + format_timestamp(data['synced_at']), 'accent', 14)]
+    return document('GitHub telemetry', f"{data['repositories']} public owned repositories. {data['active_repositories']} non-fork, non-archived repositories pushed in {data['days']} days. {len(data['languages'])} primary languages, including forks. Last synchronization {format_timestamp(data['synced_at'])}.", 264, elements, 'scripts/generate_telemetry.py')
 
 
 def update(config: dict, output=ROOT / 'assets/generated', client=None, now=None) -> None:
