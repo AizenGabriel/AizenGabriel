@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 372" role="img" aria-labelledby="title desc">
+<!-- AUTO-GENERATED FILE. Source: scripts/generate_profile.py. Do not edit manually. -->
+<title id="title">Aizen // Control Plane</title>
+<desc id="desc">Aizen Gabriel. Software Engineer · DevOps · AI. Building systems that ship, scale, observe and learn.</desc>
+<style>
+svg { color: #182637; background: transparent; }
+.bg { fill: #f5f7fa; stroke: #c8d2df; }
+.panel { fill: #eaf0f6; stroke: #c8d2df; }
+text { fill: #182637; font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+.muted { fill: #506278; } .accent { fill: #2369ac; }
+.signal { fill: #237a69; } .line { stroke: #9aaec4; fill: none; }
+@media (prefers-color-scheme: dark) {
+ .bg { fill: #111c2a; stroke: #34465b; }
+ .panel { fill: #1b2a3c; stroke: #34465b; }
+ text { fill: #e4edf7; } .muted { fill: #a0b2c8; }
+ .accent { fill: #80bfff; } .signal { fill: #75cfb8; }
+ .line { stroke: #526c89; }
+}
+@keyframes breathe { 50% { opacity: .45; } }
+.pulse { animation: breathe 4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
+</style>
+<rect class="bg" x="1" y="1" width="478" height="370" rx="14"/>
+<text x="28" y="38" class="accent" style="font-size:16px">AIZEN // CONTROL PLANE</text>
+<path class="line" d="M28 57 L452 57"/>
+<circle class="signal pulse" cx="35" cy="85" r="5"/>
+<text x="50" y="91" class="muted" style="font-size:14px">OPERATIONAL / ENGINEER ONLINE</text>
+<text x="28" y="151" class="" style="font-size:32px">AIZEN GABRIEL</text>
+<text x="28" y="187" class="muted" style="font-size:16px">Software Engineer · DevOps · AI</text>
+<text x="28" y="252" class="" style="font-size:24px">Building systems that</text>
+<text x="28" y="286" class="accent" style="font-size:24px">ship · scale · observe · learn</text>
+<path class="line" d="M28 319 L452 319"/>
+<text x="28" y="347" class="muted" style="font-size:14px">ENGINEERING / DEVOPS / AI</text>
+<text x="400" y="347" class="muted" style="font-size:14px">v1.0</text>
+</svg>

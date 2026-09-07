@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 472" role="img" aria-labelledby="title desc">
+<!-- AUTO-GENERATED FILE. Source: scripts/generate_telemetry.py. Do not edit manually. -->
+<title id="title">GitHub telemetry</title>
+<desc id="desc">1 public owned repositories. 1 non-fork, non-archived repositories pushed in 30 days. 0 primary languages. Last synchronization 2026-09-07T16:23:00Z.</desc>
+<style>
+svg { color: #182637; background: transparent; }
+.bg { fill: #f5f7fa; stroke: #c8d2df; }
+.panel { fill: #eaf0f6; stroke: #c8d2df; }
+text { fill: #182637; font: 16px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+.muted { fill: #506278; } .accent { fill: #2369ac; }
+.signal { fill: #237a69; } .line { stroke: #9aaec4; fill: none; }
+@media (prefers-color-scheme: dark) {
+ .bg { fill: #111c2a; stroke: #34465b; }
+ .panel { fill: #1b2a3c; stroke: #34465b; }
+ text { fill: #e4edf7; } .muted { fill: #a0b2c8; }
+ .accent { fill: #80bfff; } .signal { fill: #75cfb8; }
+ .line { stroke: #526c89; }
+}
+@keyframes breathe { 50% { opacity: .45; } }
+.pulse { animation: breathe 4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .pulse { animation: none; } }
+</style>
+<rect class="bg" x="1" y="1" width="478" height="470" rx="14"/>
+<text x="28" y="38" class="accent" style="font-size:16px">GITHUB / TELEMETRY</text>
+<text x="28" y="70" class="muted" style="font-size:16px">@AizenGabriel</text>
+<path class="line" d="M28 90 L452 90"/>
+<text x="28" y="135" class="" style="font-size:30px">1</text>
+<text x="98" y="130" class="muted" style="font-size:16px">public repositories</text>
+<text x="28" y="186" class="" style="font-size:30px">1</text>
+<text x="98" y="181" class="muted" style="font-size:16px">pushed in 30 days¹</text>
+<text x="28" y="237" class="" style="font-size:30px">0</text>
+<text x="98" y="232" class="muted" style="font-size:16px">primary languages²</text>
+<path class="line" d="M28 259 L452 259"/>
+<text x="28" y="289" class="muted" style="font-size:16px">No primary language reported</text>
+<text x="28" y="347" class="muted" style="font-size:16px">¹ Owned; excludes forks and archives.</text>
+<text x="28" y="374" class="muted" style="font-size:16px">² Primary languages; includes forks.</text>
+<text x="28" y="416" class="accent" style="font-size:16px">LAST SUCCESSFUL SYNC / UTC</text>
+<text x="28" y="443" class="muted" style="font-size:16px">2026-09-07T16:23:00Z</text>
+</svg>

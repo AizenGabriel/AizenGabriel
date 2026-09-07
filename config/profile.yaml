@@ -1,0 +1,36 @@
+profile:
+  name: Aizen Gabriel
+  handle: AizenGabriel
+  roles: [Software Engineer, DevOps, AI]
+  statement: I build software, automate infrastructure, and explore systems where engineering and artificial intelligence converge.
+  narrative: I build systems that operate software — and explore systems that reason about it.
+focus:
+  Engineering:
+    state: OPERATIONAL
+    scope: Engineering focus
+    capabilities: [Backend Engineering, APIs, System Architecture, Distributed Systems, Automation]
+  Infrastructure:
+    state: AUTOMATED
+    scope: Infrastructure focus
+    capabilities: [Containers, Kubernetes, Infrastructure as Code, CI/CD, Linux, Observability]
+  Artificial Intelligence:
+    state: EVOLVING
+    scope: Interests and experimentation
+    capabilities: [LLM Applications, AI Agents, RAG, AI Automation, AI Infrastructure]
+processes:
+  - {pid: '0412', name: building-reliable-systems, state: RUNNING}
+  - {pid: '0819', name: automating-repetitive-work, state: RUNNING}
+  - {pid: '1337', name: experimenting-with-agents, state: EXPLORING}
+  - {pid: '2048', name: learning-new-things, state: INFINITE}
+principles:
+  automation: automate repeatable work
+  observability: systems should explain themselves
+  reliability: design for failure
+  simplicity: complexity must earn its place
+  scalability: scale intentionally
+  learning: remain permanently unfinished
+trajectory: [Software, Automation, Infrastructure, Observability, Intelligence, Autonomous Systems]
+links:
+  github: https://github.com/AizenGabriel
+telemetry:
+  days: 30
